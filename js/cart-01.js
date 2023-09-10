@@ -8,6 +8,7 @@ window.addEventListener('click', function (event) {
     // Знаходимо карточку з товаром в середині якої ми клікнули
     const card = event.target.closest('.card');
     // Збираємо дані з цього товара та записуємо один в об'єкт productInfo
+
     const productInfo = {
       id: card.dataset.id,
       imgSrc: card.querySelector('.product-img').getAttribute('src'),
@@ -19,7 +20,7 @@ window.addEventListener('click', function (event) {
     };
     console.log(productInfo);
 
-    cardItemHTML = `<div class="cart-item" data-id="${productInfo.id}">
+    const cardItemHTML = `<div class="cart-item" data-id="${productInfo.id}">
 								<div class="cart-item__top">
 									<div class="cart-item__img">
 										<img src="${productInfo.imgSrc}" alt="${productInfo.title}">

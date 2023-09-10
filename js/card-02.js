@@ -17,9 +17,24 @@ window.addEventListener('click', function (event) {
       price: card.querySelector('.price__currency').innerText,
       counter: card.querySelector('[data-counter]').innerText,
     };
-    console.log(productInfo);
 
-    cardItemHTML = `<div class="cart-item" data-id="${productInfo.id}">
+    // Перевіряємо чи такий товар вже є в корзині
+
+    // cardWrapper.querySelector('[data-id="' + productInfo.id + '"]');
+    const itemInCart = cardWrapper.querySelector(
+      `[data-id="${productInfo.id}"]`
+    );
+    // Якщо товар є в корзині
+
+    if (itemInCart) {
+      const counterElement = itemInCart.querySelector('[data-counter]');
+      counterElement.innerText =
+        parseInt(counterElement.innerText) + parseInt(productInfo.counter);
+    } else {
+      // Якщо товара не має в корзині
+
+      // Збираємо дані, підставляємо в шаблон для товара в корзині
+      cardItemHTML = `<div class="cart-item" data-id="${productInfo.id}">
 								<div class="cart-item__top">
 									<div class="cart-item__img">
 										<img src="${productInfo.imgSrc}" alt="${productInfo.title}">
@@ -48,7 +63,11 @@ window.addEventListener('click', function (event) {
 								</div>
 							</div>`;
 
-    // Відображаємо товар в корзині
-    cardWrapper.insertAdjacentHTML('beforeend', cardItemHTML);
+      // Відображаємо товар в корзині
+      cardWrapper.insertAdjacentHTML('beforeend', cardItemHTML);
+    }
+
+    // Скидуємо лічильник добавленого товара на "1"
+    card.querySelector('[data-counter]').innerText = '1';
   }
 });

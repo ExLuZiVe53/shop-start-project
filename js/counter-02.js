@@ -19,9 +19,17 @@ window.addEventListener('click', function (event) {
   }
   // Перевіряємо чи елемент по якому ми натиснули є кнопкою Мінус
   if (event.target.dataset.action === 'minus') {
+    // Перевіряємо чи лічильник був більше 1
     if (parseInt(counter.innerText) > 1) {
-      // Змінюємо текст в лічильнику віднімаючи одиницю
+      // Змінюємо текст в лічильнику віднімаючи 1
       counter.innerText = --counter.innerText;
+      // Перевіряємо чи товар знаходиться в корзині
+    } else if (
+      event.target.closest('.cart-wrapper') &&
+      parseInt(counter.innerText) === 1
+    ) {
+      // Видаляємо товар із корзини
+      event.target.closest('.cart-item').remove();
     }
   }
 });
