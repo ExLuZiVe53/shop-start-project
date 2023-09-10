@@ -5,11 +5,9 @@ function toggleCartStatus() {
   const orderForm = document.querySelector('#order-form');
 
   if (cartWrapper.children.length > 0) {
-    console.log('Full');
     cartEmptyBadge.classList.add('none');
     orderForm.classList.remove('none');
   } else {
-    console.log('Empty');
     cartEmptyBadge.classList.remove('none');
     orderForm.classList.add('none');
   }
