@@ -34,7 +34,7 @@ window.addEventListener('click', function (event) {
       // Якщо товара не має в корзині
 
       // Збираємо дані, підставляємо в шаблон для товара в корзині
-      cardItemHTML = `<div class="cart-item" data-id="${productInfo.id}">
+      const cardItemHTML = `<div class="cart-item" data-id="${productInfo.id}">
 								<div class="cart-item__top">
 									<div class="cart-item__img">
 										<img src="${productInfo.imgSrc}" alt="${productInfo.title}">
