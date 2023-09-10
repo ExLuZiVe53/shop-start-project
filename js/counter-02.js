@@ -30,6 +30,20 @@ window.addEventListener('click', function (event) {
     ) {
       // Видаляємо товар із корзини
       event.target.closest('.cart-item').remove();
+
+      // Показуємо статус в корзині Порожня / Повна
+      toggleCartStatus();
+      // Перераховуємо загальну сумму
+      calcCartPriceAndDelivery();
     }
+  }
+
+  // Перевіряємо клік на "+" чи "-" всередині корзини
+  if (
+    event.target.hasAttribute('data-action') &&
+    event.target.closest('.cart-wrapper')
+  ) {
+    // Перераховуємо загальну сумму
+    calcCartPriceAndDelivery();
   }
 });
