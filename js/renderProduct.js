@@ -6,9 +6,9 @@ getProducts();
 // Створюємо асинхрону функцію для отримання даних з файла products.json
 async function getProducts() {
   // Отримуємо дані з products.json
-  const resp = await fetch('./js/products.json');
+  const response = await fetch('./js/products.json');
   //   Парсимо дані з JSON в JS
-  productsArray = await resp.json();
+  const productsArray = await response.json();
   // Запускаємо функцію рендер(відображення товарів)
   renderProducts(productsArray);
 }
